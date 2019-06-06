@@ -12,12 +12,14 @@ public class Paddle : MonoBehaviour
     // Cached references
     GameSession gameSession;
     Ball ball;
+    Animator m_animator;
 
     // Start is called before the first frame update
     void Start()
     {
         gameSession = FindObjectOfType<GameSession>();
         ball = FindObjectOfType<Ball>();
+        m_animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -26,6 +28,8 @@ public class Paddle : MonoBehaviour
         Vector2 paddlePos = new Vector2(transform.position.x, transform.position.y);
         paddlePos.x = Mathf.Clamp(GetPosX(), minX, maxX);
         transform.position = paddlePos;
+        
+        Bump();
     }
 
     private float GetPosX()
@@ -37,6 +41,14 @@ public class Paddle : MonoBehaviour
         else
         {
             return Input.mousePosition.x / Screen.width * screenWidthInUnits;
+        }
+    }
+
+    private void Bump()
+    {
+        if (ball.HasStarted() && Input.GetMouseButtonDown(0))
+        {
+            m_animator.SetTrigger("Bump");
         }
     }
 }

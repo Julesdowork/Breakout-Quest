@@ -46,5 +46,5 @@ MonoBehaviour:
   gameSpeed: 1
   pointsPerBlock: 10
   scoreText: {fileID: 0}
-  autoplay: 1
+  autoplay: 0
   currentScore: 0

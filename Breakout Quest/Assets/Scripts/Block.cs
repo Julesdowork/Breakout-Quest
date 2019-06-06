@@ -57,7 +57,7 @@ public class Block : MonoBehaviour
     private void PlayDestroySFX()
     {
         AudioSource.PlayClipAtPoint(breakSound, Camera.main.transform.position);
-        FindObjectOfType<GameSession>().AddToScore();
+        FindObjectOfType<Score>().AddToScore();
     }
 
     private void PlayDeathEffect()

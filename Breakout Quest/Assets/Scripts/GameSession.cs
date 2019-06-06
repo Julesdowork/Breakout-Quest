@@ -7,12 +7,8 @@ public class GameSession : MonoBehaviour
 {
     // Configuration parameters
     [Range(0.1f, 10f)] [SerializeField] float gameSpeed = 1f;
-    [SerializeField] int pointsPerBlock = 10;
-    [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] bool autoplay;
 
-    // State
-    [SerializeField] int currentScore = 0;
 
     void Awake()
     {
@@ -28,27 +24,10 @@ public class GameSession : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        DisplayScore();
-    }
-
     // Update is called once per frame
     void Update()
     {
         // Time.timeScale = gameSpeed;
-    }
-
-    private void DisplayScore()
-    {
-        scoreText.text = currentScore.ToString();
-    }
-
-    public void AddToScore()
-    {
-        currentScore += pointsPerBlock;
-        DisplayScore();
     }
 
     public void ResetGame()

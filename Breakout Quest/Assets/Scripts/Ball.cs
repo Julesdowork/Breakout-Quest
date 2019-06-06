@@ -61,4 +61,9 @@ public class Ball : MonoBehaviour
             m_rigidbody.velocity = new Vector2(xPush, yPush);
         }
     }
+
+    public bool HasStarted()
+    {
+        return hasStarted;
+    }
 }
