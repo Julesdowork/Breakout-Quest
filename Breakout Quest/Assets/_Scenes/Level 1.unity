@@ -492,7 +492,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 799517038481560772}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2059449758}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -834,6 +834,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1891751227}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2059449758 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 799517038078624102, guid: bfbb1077be00bf64e83cdc6a57979817,
+    type: 3}
+  m_PrefabInstance: {fileID: 799517038481560772}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2059449761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059449758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec55a147b5d7717489c60cc89e4be522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsPerBlock: 10
+  scoreText: {fileID: 0}
+  currentScore: 0
 --- !u!1001 &300147724623624131
 PrefabInstance:
   m_ObjectHideFlags: 0
