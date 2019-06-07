@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    // Configuration parameters
     [SerializeField] Paddle paddle;
     [SerializeField] float xPush = 2f;
     [SerializeField] float yPush = 15f;
     [SerializeField] float randomFactor = 0.2f;
     [SerializeField] AudioClip[] ballSounds;
 
+    // State
     Vector2 paddleToBallVector;
     bool hasStarted = false;
 
+    // Cached references
     Rigidbody2D m_rigidbody;
     AudioSource m_audioSource;
 

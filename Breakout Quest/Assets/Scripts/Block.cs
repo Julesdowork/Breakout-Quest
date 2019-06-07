@@ -9,9 +9,11 @@ public class Block : MonoBehaviour
     [SerializeField] int maxHits;
     [SerializeField] GameObject blockDestroyVFX;
     [SerializeField] AudioClip breakSound;
+    enum BlockType { REGULAR, ENHANCING };
 
 
     [SerializeField] int timesHit;  // TODO deserialize this
+    [SerializeField] BlockType m_blockType;
 
     Level level;
 

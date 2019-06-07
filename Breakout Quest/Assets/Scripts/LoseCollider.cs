@@ -11,8 +11,15 @@ public class LoseCollider : MonoBehaviour
         sceneLoader = FindObjectOfType<SceneLoader>();
     }
 
-    void OnTriggerEnter2D()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        sceneLoader.LoadLoseScene();
+        if (other.CompareTag("Ball"))
+        {
+            sceneLoader.LoadLoseScene();
+        }
+        else
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
