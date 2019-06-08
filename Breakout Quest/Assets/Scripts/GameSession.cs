@@ -27,7 +27,7 @@ public class GameSession : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Time.timeScale = gameSpeed;
+        Time.timeScale = gameSpeed;
     }
 
     public void ResetGame()
@@ -38,5 +38,15 @@ public class GameSession : MonoBehaviour
     public bool IsAutoplayEnabled()
     {
         return autoplay;
+    }
+
+    public void HalveSpeed()
+    {
+        gameSpeed = 0.5f;
+    }
+
+    public void NormalSpeed()
+    {
+        gameSpeed = 1f;
     }
 }

@@ -10,6 +10,7 @@ public class Block : MonoBehaviour
     [SerializeField] GameObject blockDestroyVFX;
     [SerializeField] AudioClip breakSound;
     enum BlockType { REGULAR, ENHANCING };
+    [SerializeField] GameObject powerup;
 
 
     [SerializeField] int timesHit;  // TODO deserialize this
@@ -73,6 +74,10 @@ public class Block : MonoBehaviour
     {
         Destroy(gameObject);
         level.BlockDestroyed();
+        if (m_blockType == BlockType.ENHANCING)
+        {
+            Instantiate(powerup, transform.position, Quaternion.identity);
+        }
     }
 
     private void ShowNextHitSprite()

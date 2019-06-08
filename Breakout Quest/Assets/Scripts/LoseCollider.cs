@@ -17,9 +17,5 @@ public class LoseCollider : MonoBehaviour
         {
             sceneLoader.LoadLoseScene();
         }
-        else
-        {
-            Destroy(other.gameObject);
-        }
     }
 }

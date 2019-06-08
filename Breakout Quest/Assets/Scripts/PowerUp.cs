@@ -10,16 +10,29 @@ public class PowerUp : MonoBehaviour
     };
     const int TYPE_COUNT = 9;
     [SerializeField] Sprite[] typeSprites;
+    const float effectTime = 10f;
 
     // State
     [SerializeField] PowerUpType m_type;    // TODO deserialize later
 
+    // Cached references
+    GameSession gameSession;
+    Paddle paddle;
+
+    void Awake()
+    {
+        gameSession = FindObjectOfType<GameSession>();
+        paddle = FindObjectOfType<Paddle>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        int index = Random.Range(0, TYPE_COUNT);
-        m_type = (PowerUpType) index;
-        GetComponent<SpriteRenderer>().sprite = typeSprites[index];
+        // int index = Random.Range(0, TYPE_COUNT);
+        // m_type = (PowerUpType) index;
+        // GetComponent<SpriteRenderer>().sprite = typeSprites[index];
+        m_type = PowerUpType.WIDE;
+        GetComponent<SpriteRenderer>().sprite = typeSprites[1];
     }
 
     // Update is called once per frame
@@ -33,18 +46,19 @@ public class PowerUp : MonoBehaviour
         if (other.CompareTag("Paddle"))
         {
             UsePower();
-            Destroy(gameObject);
+            Destroy(gameObject, 11f);
         }
     }
 
     private void UsePower()
     {
+        GetComponent<SpriteRenderer>().enabled = false;
         switch (m_type)
         {
-            case PowerUpType.SLOW: Debug.Log("Received Slower Ball");
-            break;
-            case PowerUpType.WIDE: Debug.Log("Received Wider Paddle");
-            break;
+            case PowerUpType.SLOW: StartCoroutine(SlowBall());
+                                    break;
+            case PowerUpType.WIDE: StartCoroutine(WidePaddle());
+                                    break;
             case PowerUpType.STICKY: Debug.Log("Received Sticky Paddle");
             break;
             case PowerUpType.MULTI: Debug.Log("Received A New Ball");
@@ -58,5 +72,21 @@ public class PowerUp : MonoBehaviour
             case PowerUpType.GHOST: Debug.Log("Received Ghost Ball");
             break;
         }
+    }
+
+    IEnumerator SlowBall()
+    {
+        Debug.Log("Received Slower Ball");
+        gameSession.HalveSpeed();
+        yield return new WaitForSecondsRealtime(effectTime);
+        gameSession.NormalSpeed();
+    }
+
+    IEnumerator WidePaddle()
+    {
+        Debug.Log("Received Wider Paddle");
+        paddle.WidenPaddle();
+        yield return new WaitForSecondsRealtime(effectTime);
+        paddle.NormalPaddle();
     }
 }
